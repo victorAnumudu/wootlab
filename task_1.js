@@ -2,14 +2,14 @@
 
 //function that takes an array of positive intergers
 let sumFunction = (array) => {
-    let evenSum = 0;
-    let oddSum = 0;
+    let evenSum = 0; // initializing sum of even numbers to zero
+    let oddSum = 0; // initializing sum of odd numbers to zero
+    let sums = [] // An array to hold the sum of even and odd nmbers
     
     // for loop to loop through the array
     for(i of array) {
 
-        //returing i to be an absolute value
-        i = Math.abs(i);
+        i = Math.abs(i); //returing each item in the array as a positive value
         if((i % 2) == 0) {
             evenSum += i;
         } else {
@@ -17,8 +17,9 @@ let sumFunction = (array) => {
         }
     }
 
-    //returing the sum of the even and odd numbers in an array
-    return [evenSum, oddSum];
+    sums.push(evenSum, oddSum);  //pushing sum of even and odd into sums array
+   
+    return sums;
 }
 
 let array = [1,2,3,4,5];

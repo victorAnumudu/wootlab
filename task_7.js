@@ -10,7 +10,7 @@ let standardDev = (arr) => {
     let myVariance = 0; // variable to hold the value of the variance
     let standardDeviation = 0; // initializing standard deviation to zero
 
-    for(i of arr) { // loop to sum up the items in the array
+    for(i of arr) { // loop to sum up the items in the array if there is no negative number
         if(i < 0) {
             return "please enter an array with position integers"
         }
@@ -31,7 +31,7 @@ let standardDev = (arr) => {
     }
 
     //dividing myVariance with arr.length, and squaring it to obtain standard deviation
-    standardDeviation = Math.sqrt((myVariance/arr.length));
+    standardDeviation += Math.sqrt((myVariance/arr.length));
     return standardDeviation.toFixed(3);
 }
 

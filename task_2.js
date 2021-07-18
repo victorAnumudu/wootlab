@@ -13,7 +13,7 @@ let isPrime = (int) => {
         }
     }
 
-    //if the length of divisibleNums is = 2, then its a prime number, because prime number can only be divided by two numbers
+    //if the length of divisibleNums is == 2, then its a prime number, because prime number can only be divided by two numbers
     if (divisibleNums.length == 2) {
         return true;
     } else {
@@ -21,5 +21,5 @@ let isPrime = (int) => {
     }
 }
 
-let result = isPrime(31);
+let result = isPrime(31); // calling the function and passing 31 as an argument
 console.log(result);

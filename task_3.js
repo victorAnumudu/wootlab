@@ -4,7 +4,7 @@
 let primeArray = (array) => {
     let primeNums = []; // array that will contain all the prime numbers
 
-    let divisibleNums = [];
+    let divisibleNums = []; // array to hold all numbers that can divide each item in the array
     
     // for loop to loop through the array
     for(i of array) {
