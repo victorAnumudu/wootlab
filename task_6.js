@@ -6,44 +6,50 @@ Output: [1, 2, 3]
 */
 
 let sumUp = (arr, num) => {
-    let sumArr = []; //an array that stores the number that adds up to some number
 
-    for(i = 0; i<arr.length; i++) { // first loop condition to run if any of the items in the array is < some number
-        if(arr[i] < num) {
+    let sumArr = []; //an array that stores an array of all the two pairs of values from the array i.e < someNumber parameter passed
+    let resultArr = []; // an array that stores all three values to equals num
 
-            sumArr.push(arr[i]); // pushing to value of "i" to sumArr
-
-            // removing "i" from the arr items
-            arr.splice(arr.indexOf(arr[i]), 1);
-
-            for(i = 0; i<arr.length; i++) { //second loop condition to run if any of the items in the new array is < some number
-               if((sumArr[0] + arr[i] < num)) {
-                sumArr.push(arr[i]); // pushing to value of "i" to sumArr
-
-                // removing "i" from the arr items
-                arr.splice(arr.indexOf(arr[i]), 1);
-                
-                for(i = 0; i<arr.length; i++) {  // third loop condition to run if any of the items in the new array is < some number
-                    if((sumArr[0] + sumArr[1] + arr[i] == num)) {
-                        sumArr.push(arr[i]); // pushing to value of "i" to sumArr
-                        return sumArr;
-                    } else if (i == arr.length-1) { // else condition to return false if all the items in the array is >= some number
-                        return -1
-                    }
-                }
-
-               } else if (i == arr.length-1) { // else condition to return false if all the items in the array is >= some number
-                return -1;
-               }
+    for(i = 0; i < arr.length; i++) { //loop to push array of all the two pairs of values from the array i.e < someNumber parameter passed
+        for(j = i+1; j < arr.length; j++) {
+            if(!(arr[i] + arr[j] >= num)){
+                sumArr.push([arr[i],arr[j]]);
             }
-
-        } else if (i == arr.length-1) { // else condition to return false if all the items in the array is >= some number
-            return -1;
         }
+    }
+
+
+    for(i=0; i<sumArr.length; i++){ //looping through the sumArr array
+        let sumArrSum = 0;
+        let newArray = [...arr]; // asssigning arr to newArray
+
+        for(j of sumArr[i]) { // obtaining the sum of each array in the sumArr array
+            sumArrSum += j;
+            newArray.splice(newArray.indexOf(j), 1); // removing the items from newArray
+        }
+        
+        for(k of newArray){ // looping through newArray and adding its value to sumArrSum
+
+            if(sumArrSum + k == num) { // if its value is same as num, push all three values into resultArr as an array
+                resultArr.push(sumArr[i].concat(k));
+
+                // for(j of sumArr[i]) { // loop through sumArr and remove its value from the arr passed as parameter
+                //     arr.splice(arr.indexOf(j), 1);
+                // }
+            }
+        }
+    
+    }
+
+    // returning resultArr if the length is > 0 or -1 if otherwise
+    if(resultArr.length != 0) {
+        return resultArr;
+    } else {
+        return -1;
     }
 }
 
-let myarr = [7,6,3,3,1];
+let myarr = [6,5,3,3,4,2,1];
 let myNum = 7;
 
 let result = sumUp(myarr, myNum);
